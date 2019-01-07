@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main",
+    "pages/phoneInfo/main",
+    "pages/coushude/main",
+    "pages/coushude1/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "测试用的小程序",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#ccc"
+  },
+  "tabBar": {
+    "color": "#8B97A0",
+    "selectedColor": "#5798CB",
+    "backgroundColor": "#eee",
+    "list": [
+      {
+        "iconPath": "static/img/username-.png",
+        "selectedIconPath": "static/img/username.png",
+        "pagePath": "pages/index/main",
+        "text": "首页"
+      },
+      {
+        "iconPath": "static/img/psd-.png",
+        "selectedIconPath": "static/img/psd.png",
+        "pagePath": "pages/counter/main",
+        "text": "vuex"
+      },
+      {
+        "iconPath": "static/img/username-.png",
+        "selectedIconPath": "static/img/username.png",
+        "pagePath": "pages/logs/main",
+        "text": "日志"
+      },
+      {
+        "iconPath": "static/img/unit-.png",
+        "selectedIconPath": "static/img/unit.png",
+        "pagePath": "pages/phoneInfo/main",
+        "text": "手机信息"
+      },
+      {
+        "iconPath": "static/img/username-.png",
+        "selectedIconPath": "static/img/username.png",
+        "pagePath": "pages/coushude/main",
+        "text": "凑数的"
+      }
+    ]
+  },
+  "debug": true
+}
