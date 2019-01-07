@@ -86,5 +86,15 @@ export default {
       success: resolve,
       fail: reject
     })
-  })
+  }),
+  // 提前向用户发起授权请求
+  authorize: (param = {}) => new Promise((resolve, reject) => {
+    wx.authorize({
+      ...param,
+      success: resolve,
+      fail: reject
+    })
+  }),
+  // 云函数调用
+  callFunction: (funcName, param = {}) => wx.cloud.callFunction({name: funcName, data: param})
 }

@@ -1,24 +1,6 @@
 <template>
   <div class="container">
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover"/>
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
-    </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model"/>
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy"/>
-    </form>
-    <a href="/pages/coushude1/main" class="counter">去往另一个凑数的页面</a>
   </div>
 </template>
 
@@ -47,16 +29,30 @@
       async getUserInfo () {
         // 调用登录接口
         try {
-          let res = await wxUtil.login()
-          console.log(res)
+          let loginInfo = await wxUtil.login()
+          console.log('login', loginInfo)
+
+          let res1 = await wx.cloud.callFunction({name: 'userlogin', data: {code: loginInfo.code}})
+          console.log('updateOpenId', res1.result)
+
+          // let authorize = await wxUtil.authorize({
+          //   scope: 'scope.userInfo'
+          // })
+
+          // console.log('authorize', authorize)
+
           // let loginRes = await myUtil.login(res.code)
+
+          // let res = await wxUtil.getSetting()
+          // console.log('getSetting', res)
 
           // console.log(loginRes)
           // try {
-          //   let userInfo = await wxUtil.getUserInfo()
-          //
+          let userInfo = await wxUtil.getUserInfo()
+
           //   this.userInfo = userInfo.userInfo
-          //   console.log(userInfo)
+          this.userInfo = userInfo.userInfo
+          console.log('getUserInfo', userInfo.userInfo)
           // } catch (e) {
           //   console.error('getUserInfo', e)
           // }
@@ -71,10 +67,10 @@
 
     async created () {
       // 调用应用实例的方法获取全局数据
-      this.getUserInfo()
+      // this.getUserInfo()
       try {
-        let res = await wxUtil.getSetting()
-        console.log(res)
+        // let res = await wxUtil.getSetting()
+        // console.log(res)
       } catch (e) {
         console.error('getSetting', e)
       }
